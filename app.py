@@ -5,7 +5,7 @@ import os
 import json
 
 #app = Flask(__name__)
-
+load_dotenv(find_dotenv()) 
 auth_url = "https://accounts.spotify.com/api/token"
 
 response = requests.post(auth_url, {
@@ -26,7 +26,8 @@ songs = requests.get(browse_url, headers=headers)
 songs = songs.json()
 
 for i in range(0,10):
-    print(songs['albums']['items'][i]['name'])
+    print(songs['albums']['items'][i]['name']), songs['albums']['items'][i]['artists'])
+#[i]['artists']['name'])
 # @app.route('/')
 # def topTen():
 #     print("App started")
